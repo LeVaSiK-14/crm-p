@@ -1,0 +1,89 @@
+{% extends 'main/index.html' %} {% load static %} {% load crispy_forms_tags %} {% block title %}HELLO{% endblock %} {% block main %}
+
+<a href="{% url 'status_url' 1 %}">Перейти в статусы</a> {% if user.is_authenticated %}
+
+<div class="all">
+
+    <div class="ri">
+        <div class="name">
+            <h6 class='textf'>Имя таска: </h6>
+            <h6 class='textf'>Статус: </h6>
+            <h6 class='textf'>Участники:</h6>
+
+            <h6 class='textf'>Дедлайн: </h6>
+            <h6 class='textf'>Начало:</h6>
+            <h6 class='textf'>Завершено: </h6>
+            <h6 class='textf'>Создано: </h6>
+            <h6 class='textf'>Документ:</h6>
+        </div>
+        {% for x in lists.third.all %}
+        <div class="borders">
+            <div class="task">
+                <h6>{{x.task_name}}</h6>
+            </div>
+            <div class="status">
+                <h6>{{x.status}}</h6>
+            </div>
+            <div class="assign">
+                {%for user in x.assign.all%}
+                <h6>{{user.username}}</h6>
+                {%endfor%}</div>
+
+            <div class="deadline">
+                <h6>{{x.dead_line}}</h6>
+            </div>
+            <div class="start">
+                <h6>{{x.start_date}}</h6>
+            </div>
+            <div class="end">
+                <h6>{{x.end_date}}</h6>
+            </div>
+            <div class="create">
+                <h6>{{x.created_by}}</h6>
+            </div>
+            <div class="file">
+                <h6>{{x.attachments}}</h6>
+            </div>
+
+            <h6><a href="{% url 'task_detail_url' lists.id x.id  %}">Редактировать Таск</a></h6>
+        </div>
+        {% endfor %}<br>
+
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#TaskModal">
+ + Add Task
+</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="TaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalList" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalList">Create Task</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="{% url 'task_url' lists.id %}">
+                            {% csrf_token %} {{task_form|crispy}}
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Task</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+{% else %}
+<a href="{% url 'accounts:login' %}" class="reg">Войти</a> {% endif %} {%endblock%}

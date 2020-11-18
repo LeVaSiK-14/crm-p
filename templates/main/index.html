@@ -1,0 +1,170 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Main page{% endblock %} 
+{% block content %} 
+
+{% if user.is_authenticated %}
+
+    
+
+<div class="left">
+<br> {% for i in space %}
+
+<!--Accordion wrapper-->
+<div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+
+  <!-- Accordion card -->
+  <div class="card">
+
+    <!-- Card header 1-->
+    <div class="card-header" role="tab" id="{{i.name}}">
+      <a  data-toggle="collapse" data-parent="#accordionEx" href="#collapse{{i.name}}" aria-expanded="true"
+        aria-controls="collapse{{i.name}}">
+        <h5 class="mb-0" id="collapsediv">
+          <div id="colorspace" style="background-color: {{i.color}}; "></div>{{i.name}}<i class="fas fa-angle-down rotate-icon"></i>
+        </h5>
+      </a>
+    </div>
+
+    <!-- Card body1 -->
+    <div id="collapse{{i.name}}" class="collapse" role="tabpanel" aria-labelledby="{{i.name}}" data-parent="#accordionEx">
+      <div class="card-body">
+        {% for x in i.second.all %}
+        <p><a href='{% url "task_url" x.id %}'>{{ x }}</a></p>
+        {% endfor %}
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#ListModal{{i.name}}">
+ + Add List
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="ListModal{{i.name}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalList" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalList">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+            <form method='post' action="{%url 'main'%}">
+                {%csrf_token%} {{form_list|crispy}}
+
+            
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Add List</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <a href="{% url 'space_detail_url' i.id %}" class="btn" style="background-color: {{i.color}}; color: white;">View detail {{i.name}}</a><br>
+      </div>
+    </div>
+
+  </div>
+  <!-- Accordion card -->
+</div><br>
+<!-- Accordion wrapper -->
+
+
+    {% endfor %}
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SpaceModal">
+  + Add Space
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="SpaceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSpace" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalSpace">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{%url 'main'%}" method='POST' id='form_create'>{%csrf_token%}
+
+      {{form_space.as_p}}
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Add Space</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+
+    {% block main %} {% endblock %}
+
+<!--
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+</script>
+-->
+
+{% else %}
+    <a href="{% url 'accounts:login' %}" class="reg">Войти</a> 
+{% endif %}
+
+{% endblock %} 
+

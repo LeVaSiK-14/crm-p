@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% block main %}
+{% if user.is_authenticated %}
+<span>{{ user.username }}</span>
+<a href="{% url 'accounts:logout' %}" class="reg">Выйти</a>
+    <form action="{%url 'create_space'%}" method='POST' id='form_create'>{%csrf_token%}
+        <p>{{form.name}}</p>
+        <p>{{form.photo}}</p>
+        <p>{{form.assign}}</p>
+        <p>{{form.status}} </p>
+        <p><input type="text" name="created_by" maxlength="150" required="" id="id_created_by" hidden="" value="{{user.username}}"></p>
+        <p><input type="color" id="id_color" class="form-control colorfield_field jscolor" name="color" value="#FF0000" placeholder="#FF0000" data-jscolor="{hash:true,width:225,height:150,required:true}" required=""></p>
+        <p><input type="submit" name="submit" id="submit" value='submit'></p>
+    </form> 
+{% else %}
+<a href="{% url 'accounts:login' %}" class="reg">Войти</a> 
+{% endif %}
+
+{% endblock%}

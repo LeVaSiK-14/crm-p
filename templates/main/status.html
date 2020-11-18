@@ -1,0 +1,56 @@
+{% extends 'main/index.html' %}
+{% block main %}
+
+<h1>Статус: {{current_status.name_status}}</h1>
+
+
+{% for i in status %}
+<a href="{% url 'status_url' i.id %}">{{ i.name_status}}</a>
+
+{% endfor%}
+
+
+    <div class="ri">
+        <div class="name">
+            <h6 class='textf'>Имя таска: </h6>
+            <h6 class='textf'>Статус: </h6>
+            <h6 class='textf'>Участники:</h6>
+
+            <h6 class='textf'>Дедлайн: </h6>
+            <h6 class='textf'>Начало:</h6>
+            <h6 class='textf'>Завершено: </h6>
+            <h6 class='textf'>Создано: </h6>
+            <h6 class='textf'>Документ:</h6>
+        </div>
+        {% for x in bbs %}
+        <div class="borders">
+            <div class="task">
+                <h6>{{x.task_name}}</h6>
+            </div>
+            <div class="status">
+                <h6>{{x.status}}</h6>
+            </div>
+            <div class="assign">
+                {%for user in x.assign.all%}
+                <h6>{{user.username}}</h6>
+                {%endfor%}</div>
+
+            <div class="deadline">
+                <h6>{{x.dead_line}}</h6>
+            </div>
+            <div class="start">
+                <h6>{{x.start_date}}</h6>
+            </div>
+            <div class="end">
+                <h6>{{x.end_date}}</h6>
+            </div>
+            <div class="create">
+                <h6>{{x.created_by}}</h6>
+            </div>
+            <div class="file">
+                <h6>{{x.attachments}}</h6>
+            </div>
+
+        </div>
+        {% endfor %}<br>
+{% endblock %}

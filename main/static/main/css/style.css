@@ -1,0 +1,87 @@
+.left {
+    min-height: 100vh;
+    max-height: 100000px;
+    width: 20%;
+    background-color: white !important;
+    border-right: 1px solid #82868D;
+    float: left;
+    padding: 50px;
+}
+
+
+    
+body {
+    background-color: #FAFAFA;
+}
+
+#colorspace {
+	border: 1px solid white; 
+	border-radius: 25px; 
+	width: 20px; 
+	height: 20px;
+	margin-right: 3px;
+}
+
+#collapsediv {
+	display: flex;
+}
+
+/* task.html */
+
+.borders {
+    margin-top: 10px;
+    display: flex;
+    width: 1520px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 1px;
+    background-color: white;
+}
+
+.name {
+    margin-top: 100px;
+    width: 1520px;
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 1px;
+    background-color: white;
+}
+
+h6 {
+    width: 150px;
+    color: #82868D;
+    font-size: 11px;
+}
+
+h6.textf {
+    width: 150px;
+    color: #34343480;
+    font-size: 11px;
+    font-weight: bolder;
+}
+
+.menu {
+    background-color: gray;
+    min-width: 300px;
+    min-height: 100vh;
+    max-height: 10000px;
+}
+
+.ri {
+    margin-left: 20px;
+    overflow: scroll; /* Добавляем полосы прокрутки */
+    height: 100vh; /* Высота блока */
+    padding: 5px; /* Поля вокруг текста */
+
+
+}
+
+.all {
+    display: flex;
+}
+
+.username {
+	float: right;
+
+}

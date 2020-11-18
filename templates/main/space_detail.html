@@ -1,0 +1,11 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}HELLO{% endblock %} 
+{% block content %} 
+
+	{{space.name}}
+	<form method="post" action="{% url 'space_detail_url' space.id %}">
+		{% csrf_token %}
+		<button class="btn btn-danger">Delete</button>
+	</form>
+{% endblock %}
