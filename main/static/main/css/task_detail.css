@@ -1,0 +1,159 @@
+.header {
+    width: 100%;
+    height: 80px;
+    background-color: #1616169f;
+}
+
+body {
+    width: 100%;
+}
+
+div.back-d {
+    transform: rotate(45deg);
+    margin-left: 95%;
+    height: 25px;
+    width: 50px;
+}
+
+a.back {
+    text-decoration: none !important;
+    font-size: 50px;
+    color: black;
+    height: 25px;
+    width: 50px;
+}
+
+.back:hover {
+    color: rgb(155, 15, 125) !important;
+}
+
+*:hover {
+    text-decoration: none !important;
+}
+
+div.status {
+    margin: 20px 20px;
+    max-width: 170px;
+    background-color: rgba(41, 179, 243, 0.911);
+    border-radius: 5px;
+}
+
+h6.status {
+    width: 180px;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+}
+
+div.under-t {
+    display: flex;
+}
+
+div.assign {
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+h6.assign {
+    color: rgba(100, 100, 100, 0.923);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+div.all {
+    display: flex;
+    width: 100%;
+}
+
+div.left {
+    overflow: scroll;
+    width: 49%;
+    border-right: 1px solid silver;
+}
+
+div.right {
+    overflow: scroll;
+    margin-left: 1%;
+    width: 50%;
+}
+
+div.task {
+    margin: 20px;
+}
+
+h6.task {
+    font-size: 40px;
+    font-weight: 200;
+}
+
+div.description {
+    border: solid rgba(211, 207, 207, 0.588) 0.5px;
+    border-radius: 10px;
+    width: 90%;
+    min-height: 300px;
+    margin-left: 3%;
+}
+
+h6.description {
+    padding: 15px;
+}
+
+h6.created,
+h6.dead,
+h6.ends {
+    margin-top: 20px;
+    width: 100%;
+    font-size: 11px;
+    color: rgba(100, 100, 100, 0.623);
+}
+
+h6.start,
+h6.deadline,
+h6.end {
+    width: 100%;
+    font-size: 13px;
+    color: rgba(100, 100, 100, 0.923);
+}
+
+div.start {
+    width: 200px;
+}
+
+div.created,
+div.ends,
+div.dead {
+    width: 200px;
+}
+
+div.borders {
+    display: flex;
+}
+
+textarea.comment-area {
+    width: 90%;
+}
+
+div.create {
+    margin-left: 60px;
+}
+
+h6.create {
+    font-size: 13px;
+    color: rgba(100, 100, 100, 0.923);
+}
+
+div.create_by {
+    margin-left: 60px;
+    margin-top: 20px;
+}
+
+h6.create_by {
+    font-size: 11px;
+    color: rgba(100, 100, 100, 0.623);
+}
+
+img.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}

@@ -24,7 +24,6 @@ class TaskForm(ModelForm):
 		widgets = {
 			'lists':HiddenInput(),
 			'dead_line': DateInput(attrs={'type': 'date'}),
-			'change_date':DateInput(attrs={'type': 'date'}),
 			'end_date': DateInput(attrs={'type': 'date'}),
 		}
 		
@@ -37,7 +36,6 @@ class SubTaskForm(ModelForm):
 		widgets = {
 			'task':HiddenInput(),
 			'dead_line': DateInput(attrs={'type': 'date'}),
-			'change_date':DateInput(attrs={'type': 'date'}),
 			'end_date': DateInput(attrs={'type': 'date'}),
 		}
 
@@ -47,6 +45,6 @@ class TaskCommentForm(ModelForm):
 		fields = ('task','name', 'comment')
 		widgets = {
 			'task': HiddenInput(),
-			'comment': Textarea(attrs = {'class': 'form-control'})
+			'comment': Textarea(attrs = {'class': 'form-control comment-area'})
 		}
 

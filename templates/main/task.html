@@ -16,10 +16,11 @@
             <h6 class='textf'>Создано: </h6>
             <h6 class='textf'>Документ:</h6>
         </div>
-        {% for x in lists.third.all %}
+        {% for x in lists.third.all %}<a href="{% url 'task_detail_url' lists.id x.id  %}">
         <div class="borders">
             <div class="task">
-                <h6>{{x.task_name}}</h6>
+            <h6>{{x.task_name}}</h6>
+                
             </div>
             <div class="status">
                 <h6>{{x.status}}</h6>
@@ -45,8 +46,9 @@
                 <h6>{{x.attachments}}</h6>
             </div>
 
-            <h6><a href="{% url 'task_detail_url' lists.id x.id  %}">Редактировать Таск</a></h6>
+            
         </div>
+        </a>
         {% endfor %}<br>
 
 

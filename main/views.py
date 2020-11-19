@@ -121,7 +121,7 @@ def TaskDetail(request, task_id, list_id):
 	'form_upd': form_upd, 
 	'lists': lists,  
 	'latest_comments_list': latest_comments_list,
-	'subtask_form': subtask_form
+	'subtask_form': subtask_form,
 	}
 	return render(request, 'main/task_detail.html', context = context)
 

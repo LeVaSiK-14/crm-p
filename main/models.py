@@ -35,7 +35,7 @@ class Space(models.Model):
 
 class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to='avatars/', blank=True)
+    avatar = models.ImageField(upload_to='avatars/', blank=True, default='default_avatar/img_avatar2.png')
     email = models.EmailField()
     action = models.ForeignKey(Action, on_delete=models.CASCADE, default='')
 
@@ -60,12 +60,12 @@ class Task(models.Model):
     lists = models.ForeignKey(List, on_delete=models.CASCADE, related_name='third')
     task_name = models.CharField(max_length=80, default='taskssssss', blank=True, null = True)
     assign = models.ManyToManyField(User, default=1, blank=True, null = True)
-    dead_line = models.DateField(blank=True, null = True)
+    dead_line = models.DateField()
     attachments = models.FileField(upload_to='files/',blank=True, null = True)
     status = models.ForeignKey(Status, on_delete=models.CASCADE, default=2, blank=True, null = True)
     description = models.TextField(blank=True, null = True, default='descriptionssssssss')
     start_date = models.DateTimeField(auto_now_add=True, blank=True)
-    end_date = models.DateTimeField(blank=True, null = True)
+    end_date = models.DateTimeField()
     created_by = models.CharField(max_length=150, blank=True, null = True, default='admin')
 
     def __str__(self):
